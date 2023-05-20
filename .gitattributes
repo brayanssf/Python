@@ -1,2 +1,28 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+#include<stdio.h>
+#include<math.h>
+#include<string.h>
+int main(){
+  int x, i, sim=0, nao=0, masc=0, fem=0; char sexo[15], resposta[4]; float femsim=0, mascnao=0;
+	scanf("%d", &x);
+	for (i=0; i<x; i++){
+		scanf("%s %s", &sexo, &resposta);
+		if ((strcmp(sexo,"MASCULINO")==0)&&(strcmp(resposta,"SIM")==0)){
+			sim++; masc++;
+		}
+		else if ((strcmp(sexo,"MASCULINO")==0)&&(strcmp(resposta,"NAO")==0)){
+			nao++; mascnao++; masc++;
+		}
+		else if ((strcmp(sexo,"FEMININO")==0)&&(strcmp(resposta,"SIM")==0)){
+			sim++; femsim++; fem++;
+		}
+		else if ((strcmp(sexo,"FEMININO")==0)&&(strcmp(resposta,"NAO")==0)){
+			nao++; fem++;
+		}
+	}
+	printf("SIM = %d\nNAO = %d\n", sim, nao);
+	printf("FEMININO - SIM = %.2f\n", (femsim*100)/fem);
+	printf("MASCULINO - NAO = %.2f\n", (mascnao*100)/masc);
+	return 0;
+}
